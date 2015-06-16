@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jw.nju.edu.cn/schema" targetNamespace="http://jw.nju.edu.cn/schema" elementFormDefault="qualified">
+	<element name="课程编号" type="tns:课程编号类型"/>
+	<simpleType name="课程编号类型">
+		<restriction base="string">
+			<length value="6"/>
+		</restriction>
+	</simpleType>
+</schema>

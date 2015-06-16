@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://jw.nju.edu.cn/schema" targetNamespace="http://jw.nju.edu.cn/schema">
+	<xsd:simpleType name="courseName">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Score">
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Teacher">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:element name="Course1">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Coursename" type="courseName" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="score" type="Score" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="teacher" type="Teacher" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="CourseId" type="xsd:int"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="MyCourse">
+		<xsd:sequence>
+			<xsd:element ref="Course1" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="myCourse" type="MyCourse">
+		<xsd:unique name="CourseIdUnique">
+			<xsd:selector xpath="Course1"/>
+			<xsd:field xpath="@CourseId"/>
+		</xsd:unique>
+	</xsd:element>
+</xsd:schema>

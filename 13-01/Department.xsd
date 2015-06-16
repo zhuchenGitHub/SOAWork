@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.nju.edu.cn/schema" targetNamespace="http://www.nju.edu.cn/schema" elementFormDefault="qualified">
+	<xs:simpleType name="departmentID">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="departmentName">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="departmentType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="党组织"/>
+			<xs:enumeration value="学生会"/>
+			<xs:enumeration value="行政部门"/>
+			<xs:enumeration value="物业部门"/>
+			<xs:enumeration value="直属部门"/>
+			<xs:enumeration value="院系"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="departmentDescription">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:element name="Department">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="departmentID"/>
+				<xs:element name="name" type="departmentName"/>
+				<xs:element name="type" type="departmentType"/>
+				<xs:element name="description" type="departmentDescription"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

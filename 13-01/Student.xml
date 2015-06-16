@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<StudentXML xmlns="http://jw.nju.edu.cn/schema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://jw.nju.edu.cn/schema Student.xsd">
+        <student studentid="1">
+		<personInfo>
+             	      <id>121250049</id>
+		      <name>花霞</name>
+		      <sex>female</sex>
+		      <age>20</age>
+		      <department>软件学院</department>
+		</personInfo>
+
+		<myCourse>
+                     <Course CourseID="001">
+                      	 <name></name>
+                         <score></score>
+                         <teacher></teacher>
+                     </Course>
+                     <Course CourseID="002">
+                      	 <name></name>
+                         <score></score>
+                         <teacher></teacher>
+                     </Course>
+                </myCourse>
+
+       	 </student>
+
+</StudentXML>

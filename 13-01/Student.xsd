@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://jw.nju.edu.cn/schema" xmlns:Per="http://www.nju.edu.cn/schema" targetNamespace="http://jw.nju.edu.cn/schema">
+	<xs:import namespace="http://www.nju.edu.cn/schema" schemaLocation="PersonInfo.xsd"/>
+	<xs:include schemaLocation="Course.xsd"/>
+	<xs:element name="student">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Per:personInfo" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="myCourse" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="studentid" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StudentXML">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="student" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="StudentIdUnique">
+			<xs:selector xpath="student"/>
+			<xs:field xpath="@studentid"/>
+		</xs:unique>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://jw.nju.edu.cn/schema" xmlns:Per="http://www.nju.edu.cn/schema" targetNamespace="http://jw.nju.edu.cn/schema" elementFormDefault="qualified">
+	<xs:import namespace="http://www.nju.edu.cn/schema" schemaLocation="PersonInfo.xsd"/>
+	<xs:include schemaLocation="Student.xsd"/>
+	<xs:include schemaLocation="Course.xsd"/>
+	<xs:simpleType name="normalScore">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="testScore">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="finalScore">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="score">
+		<xs:sequence>
+			<xs:element name="NormalScore" type="normalScore"/>
+			<xs:element name="TestScore" type="testScore"/>
+			<xs:element name="FinalScore" type="finalScore"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="course">
+		<xs:sequence>
+			<xs:element name="CourseName" type="courseName" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="TeacherName" type="Teacher" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ClassRoom" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="MyScore" type="score" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="CourseID" type="xs:string"/>
+	</xs:complexType>
+	<xs:element name="CourseList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Course" type="course" minOccurs="5" maxOccurs="5"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="CourseIdUnique1">
+			<xs:selector xpath="Course"/>
+			<xs:field xpath="@CourseID"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="Student">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Per:personInfo" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="CourseList" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="StudentNO" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StudentList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Student" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="StudentNOUnique">
+			<xs:selector xpath="Student"/>
+			<xs:field xpath="@StudentNO"/>
+		</xs:unique>
+	</xs:element>
+</xs:schema>
